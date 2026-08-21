@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GVG Team Counter</title>
+<meta name="description" content="See the enemy GVG teams and pick the Animus to fight them with.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <h1>GVG Counter Board</h1>
+      <p>What does the enemy have, and what do we send against them?</p>
+    </div>
+    <div class="topbar-right">
+      <div class="tally" id="tally" aria-live="polite">
+        <span class="tally-num win" id="tallyWin">0</span><span class="tally-sep">–</span><span class="tally-num loss" id="tallyLoss">0</span>
+      </div>
+      <button type="button" class="btn-plain" id="resetBtn">Reset board</button>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="board-wrap" aria-label="Matchup board">
+    <div class="board" id="board">
+      <div class="board-head">
+        <span class="col-label"></span>
+        <span class="col-title enemy-title">Enemy</span>
+        <span class="col-title mine-title">My Team</span>
+        <span class="col-label"></span>
+      </div>
+      <div id="rows"></div>
+    </div>
+    <div class="board-foot">
+      <button type="button" class="btn-plain" id="addTeamBtn">+ Add team</button>
+      <p class="hint" id="hint">Tap a slot, then pick an Animus from the library.</p>
+    </div>
+  </section>
+
+  <aside class="library" id="library" aria-label="Animus library">
+    <div class="library-head">
+      <div class="library-title-row">
+        <h2>Animus Library</h2>
+        <button type="button" class="drawer-close" id="drawerClose" aria-label="Close library">×</button>
+      </div>
+      <label class="search">
+        <span class="sr-only">Search Animus</span>
+        <input type="search" id="search" placeholder="Search Animus…" autocomplete="off" spellcheck="false">
+      </label>
+      <p class="target-note" id="targetNote">No slot selected</p>
+    </div>
+    <div class="library-grid" id="libraryGrid" tabindex="-1"></div>
+    <p class="library-status" id="libraryStatus">Loading Animus data…</p>
+  </aside>
+
+</main>
+
+<button type="button" class="drawer-toggle" id="drawerToggle">Animus Library</button>
+<div class="scrim" id="scrim" hidden></div>
+
+<script src="./vendor/xlsx.full.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
